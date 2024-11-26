@@ -418,6 +418,7 @@ def combine_frames(
 
             # Prepare temporary arrays
             buffer = np.zeros((len(files), x_right - x_left))
+            print(buffer.dtype)
             probability = np.zeros((len(files), x_right - x_left))
 
             # for each row
@@ -431,7 +432,7 @@ def combine_frames(
                 idx = index(row, x_left, x_right)
                 for i in range(len(files)):
                     # TODO: does memmap not work with compressed files?
-                    buffer[i, :] = data[i].data[idx] * bscale[i] + bzero[i]
+                    buffer[i, :] = data[i].data[idx].astype('float64') * bscale[i] + bzero[i]
 
                 # Calculate probabilities
                 probability[:, window:-window] = calculate_probability(buffer, window)
