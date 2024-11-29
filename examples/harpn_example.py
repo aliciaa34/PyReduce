@@ -34,7 +34,7 @@ steps = (
 
 # load dataset (and save the location)
 #base_dir = datasets.HARPS("/DATA/PyReduce")
-base_dir = "/home/tom/pipes/HARPN"
+base_dir = "/Users/aliciaanderson/Documents/python/data/HARPN"
 input_dir = "raw"
 output_dir = "reduced_{mode}"
 

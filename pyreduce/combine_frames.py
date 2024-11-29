@@ -432,7 +432,7 @@ def combine_frames(
                 for i in range(len(files)):
                     # If the following causes int16 overflow, add .astype('float64')
                     # to the first term. The receiving buffer is f64 anyway.
-                    buffer[i, :] = data[i].data[idx] * bscale[i] + bzero[i]
+                    buffer[i, :] = data[i].data[idx].astype('float64') * bscale[i] + bzero[i]
 
                 # Calculate probabilities
                 probability[:, window:-window] = calculate_probability(buffer, window)
